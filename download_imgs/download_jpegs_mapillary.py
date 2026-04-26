@@ -16,6 +16,7 @@ import mapillary.interface as mly
 import time
 import random
 from pathlib import Path
+from dotenv import load_dotenv
 
 def download_image_from_url(image_url, dst_path):
     try:
@@ -57,7 +58,9 @@ def check_id(image_folder):
 
 if __name__ == '__main__':
 
-    access_token = 'INSERT-YOUR-TOKEN-HERE' # update your mapillary access token
+    load_dotenv()
+
+    access_token = os.get_env('MAPILLARY_ACCESS_TOKEN') # update your mapillary access token
     mly.set_access_token(access_token)
 
     # Update in_csvPath and out_jpegFolder to suit your needs
