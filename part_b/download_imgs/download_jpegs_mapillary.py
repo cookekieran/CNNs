@@ -42,10 +42,13 @@ def get_image_url(image_id):
     except Exception as e:
         print('network error', e)
 
-
 def download_image(image_id, dst_path):
     image_url = get_image_url(image_id)
-    download_image_from_url(image_url, dst_path)
+    
+    if image_url is not None:
+        download_image_from_url(image_url, dst_path)
+    else:
+        print(f"URL not found for image {image_id}")
 
 
 def check_id(image_folder):
@@ -59,20 +62,23 @@ def check_id(image_folder):
 if __name__ == '__main__':
 
     load_dotenv()
+    access_token = os.getenv('MAPILLARY_ACCESS_TOKEN')
+    output_path = os.getenv('OUTPUT_PATH')
 
-    access_token = os.get_env('MAPILLARY_ACCESS_TOKEN') # update your mapillary access token
     mly.set_access_token(access_token)
 
     # Update in_csvPath and out_jpegFolder to suit your needs
-    in_csvPath = '../raw_download/sample_output/points.csv' # input csv
-    out_jpegFolder = './sample_output/mly' # output folder to store the downloaded images
+    in_csvPath = '10000_imgs.csv' # input csv
+    out_jpegFolder = output_path # output folder to store the downloaded images
     Path(out_jpegFolder).mkdir(parents=True, exist_ok=True)
 
     threads = []
-    num_thread = 100
+    num_thread = 10
     already_id = check_id(out_jpegFolder)
 
     data_l = pd.read_csv(in_csvPath)
+    data_l['orig_id'] = data_l['orig_id'].astype(float).apply(lambda x: '{:.0f}'.format(x)) # strip decimal points
+
     data_l = data_l[data_l['source']=='Mapillary']
 
     index = 0
