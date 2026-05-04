@@ -77,14 +77,14 @@ if __name__ == '__main__':
     already_id = check_id(out_jpegFolder)
 
     data_l = pd.read_csv(in_csvPath)
-    data_l['orig_id'] = data_l['orig_id'].astype(float).apply(lambda x: '{:.0f}'.format(x)) # strip decimal points
+    # data_l['orig_id'] = data_l['orig_id'].astype(float).apply(lambda x: '{:.0f}'.format(x)) # strip decimal points?
 
     data_l = data_l[data_l['source']=='Mapillary']
 
     index = 0
 
     for _, values in data_l.iterrows():
-        image_id = values['orig_id']
+        image_id = values['uuid']
         if str(image_id) in already_id:
             continue
 
@@ -112,3 +112,8 @@ if __name__ == '__main__':
         t.setDaemon(True)
         t.start()
     t.join()
+
+
+"""
+orig_id numbers are not matching the numbers in the mapillary database. big numbers are being rounded automatically by excel.
+"""
