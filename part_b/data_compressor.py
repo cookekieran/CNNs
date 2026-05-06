@@ -13,7 +13,7 @@ def compress_and_resize():
         os.makedirs(OUTPUT_FOLDER)
 
     # Filter for standard image formats
-    valid_extensions = ('.jpg', '.jpeg', '.png')
+    valid_extensions = ('.jpg', '.jpeg',)
     
     try:
         files_to_process = [f for f in os.listdir(INPUT_FOLDER) if f.lower().endswith(valid_extensions)]
