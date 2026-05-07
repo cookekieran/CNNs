@@ -2,3 +2,5 @@
 *.csv
 *.parquet
 .vscode/
+sams_drafts/
+saved_models/
