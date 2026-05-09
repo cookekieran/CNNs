@@ -5,9 +5,9 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # --- CONFIG ---
-HF_REPO_ID = "cookekieran/eu_cities"
-TRAIN_PATH = os.getenv("TRAIN_METADATA_PATH")
-TEST_PATH = os.getenv("TEST_METADATA_PATH")
+HF_REPO_ID = "cookekieran/eu_citiesv2"
+TRAIN_PATH = os.getenv(r"TRAIN_METADATA_PATH")
+TEST_PATH = os.getenv(r"TEST_METADATA_PATH")
 HF_TOKEN = os.getenv("HF_TOKEN")
 
 api = HfApi()
