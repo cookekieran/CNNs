@@ -4,3 +4,4 @@
 .vscode/
 sams_drafts/
 saved_models/
+*__pycache__/
