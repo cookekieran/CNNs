@@ -12,8 +12,10 @@ load_dotenv()
 
 INPUT_FOLDER = os.getenv("DATA_INPUT_FOLDER")
 HF_TOKEN = os.getenv("HF_TOKEN")
-HF_REPO_ID = "cookekieran/eu_cities" 
+HF_REPO_ID = "cookekieran/eu_citiesv2" 
 TARGET_SIZE = (224, 224)
+
+SPLIT = "test"
 
 def process_single_image(filename):
     img_path = os.path.join(INPUT_FOLDER, filename)
@@ -53,7 +55,7 @@ def full_upload():
 
     print(f"Attempting upload to {HF_REPO_ID}...")
     try:
-        dataset.push_to_hub(HF_REPO_ID, split="test", token=HF_TOKEN) # change for training/testing
+        dataset.push_to_hub(HF_REPO_ID, split=SPLIT, token=HF_TOKEN) # change for training/testing
         print(f"\nSUCCESS! All images are live at: https://huggingface.co/datasets/{HF_REPO_ID}")
     except Exception as e:
         print(f"\nUpload failed: {e}")
