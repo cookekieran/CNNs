@@ -10,7 +10,7 @@ load_dotenv()
 
 # --- CONFIGURATION ---
 
-INPUT_FOLDER = os.getenv("DATA_INPUT_FOLDER")
+INPUT_FOLDER = os.getenv(r"DATA_INPUT_FOLDER")
 HF_TOKEN = os.getenv("HF_TOKEN")
 HF_REPO_ID = "cookekieran/eu_citiesv2" 
 TARGET_SIZE = (224, 224)
