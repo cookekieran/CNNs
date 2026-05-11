@@ -15,7 +15,7 @@ HF_TOKEN = os.getenv("HF_TOKEN")
 HF_REPO_ID = "cookekieran/eu_citiesv2" 
 TARGET_SIZE = (224, 224)
 
-SPLIT = "test"
+SPLIT = "sample"
 
 def process_single_image(filename):
     img_path = os.path.join(INPUT_FOLDER, filename)
