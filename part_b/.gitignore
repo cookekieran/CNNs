@@ -5,3 +5,4 @@
 sams_drafts/
 saved_models/
 *__pycache__/
+*.pth
