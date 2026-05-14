@@ -7,3 +7,4 @@ saved_models/
 *__pycache__/
 *.pth
 EfficientAT/
+*notebookv6.ipynb
